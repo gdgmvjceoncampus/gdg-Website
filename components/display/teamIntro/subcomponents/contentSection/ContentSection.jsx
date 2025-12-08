@@ -25,7 +25,7 @@ const ContentSection = () => {
       {isMobile ? <GoogleDocsMobileWindow /> : <GoogleDocsWindow />}
       <div className="docs-text">
         <TypingEffect interKeyStrokeDurationInMs={20} showCursor={true}>
-          The Content Team at GDSC MVJCE is the storytelling heart of our
+          The Content Team at GDG MVJCE is the storytelling heart of our
           community. They curate captivating blogs, craft insightful articles,
           and orchestrate engaging newsletters. With a passion for sharing
           knowledge and fostering connections, this team weaves words into

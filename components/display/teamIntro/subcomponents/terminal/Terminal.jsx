@@ -14,7 +14,7 @@ const azeret = Azeret_Mono({
 });
 
 const Terminal = () => {
-  const [isGDSCTextTyped, setIsGDSCTextTyped] = useState(false);
+  const [isGDGTextTyped, setIsGDGTextTyped] = useState(false);
   return (
     <TerminalContainer>
       <TerminalHeader>
@@ -24,16 +24,16 @@ const Terminal = () => {
       </TerminalHeader>
       <TerminalContent className={azeret.className}>
         <TypingEffect
-          className='gdsc-text'
+          className='gdg-text'
           showCursor={true}
           onTypingComplete={() => {
-            setIsGDSCTextTyped(true);
+            setIsGDGTextTyped(true);
           }}
           interKeyStrokeDurationInMs={100}
-        >{`$gdsc cd /tech`}</TypingEffect>
-        {isGDSCTextTyped && (
+        >{`$gdg cd /tech`}</TypingEffect>
+        {isGDGTextTyped && (
           <TypingEffect interKeyStrokeDurationInMs={40} showCursor={true}>
-            {`>> The GDSC Tech Team is a powerhouse of web development expertise, specializing in the latest technologies like Firebase and beyond.`}
+            {`>> The GDG Tech Team is a powerhouse of web development expertise, specializing in the latest technologies like Firebase and beyond.`}
           </TypingEffect>
         )}
       </TerminalContent>

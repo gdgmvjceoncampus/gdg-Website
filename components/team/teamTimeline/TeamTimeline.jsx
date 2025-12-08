@@ -19,7 +19,7 @@ const TeamTimeline = () => {
   return (
     <TeamTimelineContainer>
       <div className="header">
-        <Typography variant="displayLarge">GDSC Timeline</Typography>
+        <Typography variant="displayLarge">GDG Timeline</Typography>
         <Typography variant="body">From Inception to Innovation</Typography>
       </div>
 
@@ -32,7 +32,103 @@ const TeamTimeline = () => {
           }}
           contentArrowStyle={{ borderRight: "7px solid  #4285F4" }}
           dateClassName="date"
-          date="2023 - present"
+          date="2025 - present"
+          iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
+          icon={<GroupIcon />}
+        >
+          <TeamTimelineCardContainer>
+            <TeamImageContainer>
+              <Image
+                src="/images/team-2025.png"
+                fill={"responsive"}
+                alt="Team 2025"
+                style={{ objectFit: "cover" }}
+              />
+            </TeamImageContainer>
+            <Typography variant="h4">Team 2025</Typography>
+
+            <ul>
+              <li>
+                Continuing to drive innovation and community engagement in the
+                tech space.
+              </li>
+              <li>
+                Expanding our reach with cutting-edge workshops and collaborative
+                projects.
+              </li>
+              <li>
+                Building on the foundation laid by previous teams to create an
+                even more vibrant developer community.
+              </li>
+            </ul>
+            <Link
+              href="/team/2025"
+              style={{
+                textDecoration: "none",
+                width: "100%"
+              }}
+            >
+              <ViewTeamButton>View Team</ViewTeamButton>
+            </Link>
+          </TeamTimelineCardContainer>
+        </VerticalTimelineElement>
+        <VerticalTimelineElement
+          className="vertical-timeline-element--work"
+          contentStyle={{
+            background: "rgba(255,255,255,0.6)",
+            boxShadow: "0px 0px 20px -2px rgba(0, 0, 0, 0.16)"
+          }}
+          contentArrowStyle={{ borderRight: "7px solid  #4285F4" }}
+          dateClassName="date"
+          date="2024 - 2025"
+          iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
+          icon={<GroupIcon />}
+        >
+          <TeamTimelineCardContainer>
+            <TeamImageContainer>
+              <Image
+                src="/images/team-2024.png"
+                fill={"responsive"}
+                alt="Team 2024"
+                style={{ objectFit: "cover" }}
+              />
+            </TeamImageContainer>
+            <Typography variant="h4">Team 2024</Typography>
+
+            <ul>
+              <li>
+                Furthered the mission of GDSC MVJCE with innovative events and
+                community initiatives.
+              </li>
+              <li>
+                Strengthened partnerships and expanded the club&apos;s impact
+                across the campus.
+              </li>
+              <li>
+                Organized successful hackathons and tech talks, inspiring the
+                next generation of developers.
+              </li>
+            </ul>
+            <Link
+              href="/team/2024"
+              style={{
+                textDecoration: "none",
+                width: "100%"
+              }}
+            >
+              <ViewTeamButton>View Team</ViewTeamButton>
+            </Link>
+          </TeamTimelineCardContainer>
+        </VerticalTimelineElement>
+        <VerticalTimelineElement
+          className="vertical-timeline-element--work"
+          contentStyle={{
+            background: "rgba(255,255,255,0.6)",
+            boxShadow: "0px 0px 20px -2px rgba(0, 0, 0, 0.16)"
+          }}
+          contentArrowStyle={{ borderRight: "7px solid  #4285F4" }}
+          dateClassName="date"
+          date="2023 - 2024"
           iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
           icon={<GroupIcon />}
         >

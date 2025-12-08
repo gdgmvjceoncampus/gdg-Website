@@ -37,22 +37,20 @@ function AboutSection() {
                 &nbsp;
                 <Span color={theme.colors.brandRed}>G</Span>
                 <Span color={theme.colors.brandBlue}>D</Span>
-                <Span color={theme.colors.brandGreen}>S</Span>
-                <Span color={theme.colors.brandYellow}>C</Span>?
+                <Span color={theme.colors.brandGreen}>G</Span>?
               </ClubName>
             </Typography>
           </Link>
         </HeadingContainer>
         <Typography variant="body">
-          Welcome to the realm of GDSC! As part of Google Developer Student
-          Clubs, we&apos;re a global network with over 1,900 chapters in 100+
+          Welcome to the realm of GDG! As part of Google Developer Groups, we&apos;re a global network with over 1,900 chapters in 100+
           countries. Join us to connect with like-minded students interested in
           tech, regardless of your background.
         </Typography>
         <Typography variant="body">
           Explore hands-on workshops, talks, and projects both online and
           offline. Grow your skills, build solutions for local challenges, and
-          give back to the community. With GDSC, you&apos;re not just learning -
+          give back to the community. With GDG, you&apos;re not just learning -
           you&apos;re shaping your future as a developer and making an impact.
         </Typography>
       </RightContainer>

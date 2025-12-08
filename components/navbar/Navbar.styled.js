@@ -27,7 +27,8 @@ export const NavbarContainer = styled.nav`
 `;
 
 export const LeftContainer = styled.div`
-  width: 400px;
+  width: auto;
+  min-width: 200px;
   height: 100%;
   display: flex;
   justify-content: start;
@@ -177,18 +178,20 @@ export const MenuItem = styled(Typography)`
 `;
 
 export const LogoContainer = styled.div`
-  width: 400px;
-  aspect-ratio: 380/42;
+  width: 380px;
+  height: 95px;
   position: relative;
   display: flex;
   justify-content: start;
   align-items: center;
 
   @media screen and (${devices.xl}) {
-    width: ${({ isMobile }) => !isMobile && "300px"};
+    width: ${({ isMobile }) => !isMobile && "340px"};
+    height: ${({ isMobile }) => !isMobile && "85px"};
   }
 
   @media screen and (${devices.sm}) {
-    width: ${({ isMobile }) => (!isMobile ? "200px" : "300px")};
+    width: ${({ isMobile }) => (!isMobile ? "260px" : "320px")};
+    height: ${({ isMobile }) => (!isMobile ? "70px" : "80px")};
   }
 `;

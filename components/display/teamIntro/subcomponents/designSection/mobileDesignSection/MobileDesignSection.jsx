@@ -10,7 +10,7 @@ const MobileDesignSection = () => {
       <Typography variant="body">
         <TypingEffect
           interKeyStrokeDurationInMs={20}
-        >{`The Design Team at GDSC MVJCE is the driving force behind our visual appeal.
+        >{`The Design Team at GDG MVJCE is the driving force behind our visual appeal.
       They craft compelling event posters and captivating graphics.`}</TypingEffect>
       </Typography>
     </MobileDesignSectionContainer>

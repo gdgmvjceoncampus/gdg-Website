@@ -41,18 +41,19 @@ export const FooterContainer = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  padding: 2em;
+  padding: 1.5em 2em;
   box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.1);
   background-color: ${({ theme }) => theme.colors.bgPrimary};
   border-radius: 30px 30px 0 0;
 
   @media screen and (${devices.md}) {
     flex-direction: column;
-    gap: 1.7em;
+    gap: 1.2em;
+    padding: 1.5em;
   }
 
   @media screen and (${devices.sm}) {
-    padding: 2em 0;
+    padding: 1.5em 1em;
   }
 `;
 
@@ -60,22 +61,37 @@ export const LogoWrapper = styled.div`
   width: calc(100% / 3);
   display: flex;
   flex-direction: column;
-  gap: 1em;
+  gap: 0.8em;
+  align-items: flex-start;
+  margin-left: -0.5em;
 
   @media screen and (${devices.md}) {
     width: 100%;
     align-items: center;
     text-align: center;
+    margin-left: 0;
   }
 `;
 
 export const LogoContainer = styled.div`
-  width: 80%;
-  aspect-ratio: 380/42;
+  width: 420px;
+  height: 60px;
   position: relative;
   display: flex;
-  justify-content: start;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 0;
+  padding: 0;
+
+  @media screen and (${devices.md}) {
+    width: 370px;
+    height: 55px;
+  }
+
+  @media screen and (${devices.sm}) {
+    width: 320px;
+    height: 50px;
+  }
 `;
 
 export const FooterSocials = styled.div`
@@ -111,7 +127,7 @@ export const FooterMeta = styled.div`
   justify-content: center;
   align-items: flex-end;
   color: ${({ theme }) => theme.colors.contentSecondary};
-  gap: 0.8em;
+  gap: 0.6em;
   text-align: right;
 
   @media screen and (${devices.md}) {

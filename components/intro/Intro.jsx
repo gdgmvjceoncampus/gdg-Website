@@ -139,8 +139,7 @@ function Intro({ isMobile }) {
                   &nbsp;
                   <Span color={theme.colors.brandRed}>G</Span>
                   <Span color={theme.colors.brandBlue}>D</Span>
-                  <Span color={theme.colors.brandGreen}>S</Span>
-                  <Span color={theme.colors.brandYellow}>C</Span>?
+                  <Span color={theme.colors.brandGreen}>G</Span>?
                 </ClubName>
               </Typography>
             </Link>

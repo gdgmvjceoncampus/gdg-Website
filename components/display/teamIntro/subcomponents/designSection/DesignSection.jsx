@@ -15,7 +15,7 @@ import {
 import Typography from "@/components/display/typography/Typography";
 import { Draggable } from "@/components/draggable/Draggable";
 import { Droppable } from "@/components/droppable/Droppable";
-import GDSCLogo from "@public/logos/gdscmvjce-logo.svg";
+import GDGLogo from "@public/logos/gdgmvjce-logo.svg";
 import { restrictToParentElement } from "@dnd-kit/modifiers";
 const DesignSection = () => {
   const defaultCoordinates = {
@@ -79,7 +79,7 @@ const DesignSection = () => {
           >
             <div className="text-draggable">
               <Typography variant="bodyEmphasized">
-                The Design Team at GDSC MVJCE is the driving force behind our
+                The Design Team at GDG MVJCE is the driving force behind our
                 visual appeal. They craft compelling event posters and
                 captivating graphics
               </Typography>
@@ -107,7 +107,7 @@ const DesignSection = () => {
             className="draggable logo"
             id="logo"
           >
-            <GDSCLogo />
+            <GDGLogo />
           </Draggable>
         </div>
       </DndContext>

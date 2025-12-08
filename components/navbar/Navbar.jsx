@@ -96,10 +96,11 @@ function Navbar() {
             <LogoContainer>
               <Link href="/">
                 <Image
-                  src={"/logos/gdscmvjce-logo.svg"}
-                  alt={"GDSC Logo"}
-                  fill="responsive"
-                  sizes="500px"
+                  src={"/logos/gdgmvjce-logo.svg"}
+                  alt={"GDG Logo"}
+                  fill
+                  sizes="380px"
+                  style={{ objectFit: "contain" }}
                   priority={true}
                 />
               </Link>
@@ -139,11 +140,11 @@ function Navbar() {
           <TopContainer>
             <LogoContainer isMobile={isMobile}>
               <Image
-                src={"/logos/gdscmvjce-logo.svg"}
-                alt={"GDSC Logo"}
-                fill="responsive"
-                sizes="500px"
-                style={{ objectFit: "cover" }}
+                src={"/logos/gdgmvjce-logo.svg"}
+                alt={"GDG Logo"}
+                fill
+                sizes="320px"
+                style={{ objectFit: "contain" }}
               />
             </LogoContainer>
             <CloseIcon

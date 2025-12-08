@@ -48,7 +48,7 @@ function MeetTeam({ isMobile }) {
       </LeftContainer>
       <RightContainer>
         <Typography variant="h1">
-          Discover the great minds behind GDSC.
+          Discover the great minds behind GDG.
         </Typography>
         <Link href="/team" style={{ textDecoration: "none" }}>
           <MeetButton>Meet our team</MeetButton>

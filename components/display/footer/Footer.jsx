@@ -45,18 +45,18 @@ function Footer() {
         <LogoContainer>
           <Link href="/">
             <Image
-              src={"/logos/gdscmvjce-logo.svg"}
-              alt={"GDSC Logo"}
-              fill="responsive"
-              sizes="500px"
-              style={{ objectFit: "cover" }}
+              src={"/logos/gdgmvjce-logo.svg"}
+              alt={"GDG Logo"}
+              fill
+              sizes="420px"
+              style={{ objectFit: "contain", objectPosition: "left top" }}
             />
           </Link>
         </LogoContainer>
         <Typography
           variant="bodySmall"
           subdued
-          style={{ paddingLeft: "0.5em" }}
+          style={{ paddingTop: "0.5em", width: "100%" }}
         >
           Near ITPB, Channasandra, Bangalore - 560067
           <br />
