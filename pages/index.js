@@ -75,7 +75,7 @@ export default function Home() {
         <Intro isMobile={isSmall} />
         <OfferSection isMobile={isMedium} />
         <TeamIntro isMobile={isLarge} />
-        <MeetTeam isMobile={isSmall} />
+        <MeetTeam />
         <EventsSection isMobile={isLarge} />
         {/* <GalleryCarousel /> */}
         <BlogsSection isMobile={isLarge} />

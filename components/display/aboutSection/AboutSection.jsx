@@ -10,7 +10,6 @@ import {
   RightContainer,
   Span
 } from "./AboutSection.styled";
-import LogoCanvas from "@/components/canvas/GDSCLogo";
 
 function AboutSection() {
   const theme = useTheme();
@@ -18,7 +17,15 @@ function AboutSection() {
   return (
     <AboutSectionWrapper>
       <LeftContainer>
-        <LogoCanvas />
+        <img
+          src="/logos/gdg-logo-animated.gif"
+          alt="GDG Logo"
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "contain"
+          }}
+        />
       </LeftContainer>
       <RightContainer>
         <HeadingContainer>

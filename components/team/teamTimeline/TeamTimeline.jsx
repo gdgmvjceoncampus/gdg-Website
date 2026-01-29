@@ -97,7 +97,7 @@ const TeamTimeline = () => {
 
             <ul>
               <li>
-                Furthered the mission of GDSC MVJCE with innovative events and
+                Furthered the mission of GDG MVJCE with innovative events and
                 community initiatives.
               </li>
               <li>

@@ -30,15 +30,15 @@ import PeopleIcon from "@mui/icons-material/People";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import MailIcon from "@mui/icons-material/Mail";
 import DomainSideNav from "./DomainSideNav";
+import { getDomainColorsByYear, getYearFromSlug } from "@/constants/domainColors";
 
-const domainConfig = [
+// Base domain configuration (colors will be overridden based on year)
+const baseDomainConfig = [
   {
     id: "tech",
     title: "Tech",
     subtitle: "Web & Cloud Development",
     description: "Explore cutting-edge web technologies, cloud computing, and software engineering. From frontend frameworks to backend architectures, we build the future.",
-    color: "#f8d8d8",
-    darkColor: "#e5a3a3",
     icon: CodeIcon,
     features: ["React & Next.js", "Cloud Platforms", "DevOps & CI/CD", "Open Source"]
   },
@@ -47,8 +47,6 @@ const domainConfig = [
     title: "ML & Android",
     subtitle: "AI & Mobile Innovation",
     description: "Dive into machine learning, artificial intelligence, and Android development. Build smart apps that learn and adapt.",
-    color: "#c3ecf6",
-    darkColor: "#7dd3e8",
     icon: PsychologyIcon,
     features: ["TensorFlow & PyTorch", "Android Studio", "Kotlin & Jetpack", "Edge AI"]
   },
@@ -57,8 +55,6 @@ const domainConfig = [
     title: "Design",
     subtitle: "UI/UX & Creative Vision",
     description: "Craft beautiful, intuitive experiences. From wireframes to polished interfaces, design that users love.",
-    color: "#ccf6c5",
-    darkColor: "#8fe880",
     icon: PaletteIcon,
     features: ["Figma & Adobe XD", "Design Systems", "User Research", "Prototyping"]
   },
@@ -67,8 +63,6 @@ const domainConfig = [
     title: "Content",
     subtitle: "Stories & Documentation",
     description: "Tell compelling stories through blogs, videos, and documentation. Share knowledge and inspire the community.",
-    color: "#ffe7a5",
-    darkColor: "#ffd54f",
     icon: ArticleIcon,
     features: ["Technical Writing", "Video Production", "Social Media", "Podcasting"]
   },
@@ -77,12 +71,23 @@ const domainConfig = [
     title: "Community",
     subtitle: "Connect & Grow Together",
     description: "Build lasting connections, organize events, and foster an inclusive environment where everyone belongs.",
-    color: "#f0f0f0",
-    darkColor: "#c0c0c0",
     icon: PeopleIcon,
     features: ["Hackathons", "Meetups", "Mentorship", "Networking"]
   }
 ];
+
+// Function to get domain config with year-specific colors
+const getDomainConfig = (year) => {
+  const domainColors = getDomainColorsByYear(year);
+  return baseDomainConfig.map(domain => {
+    const colors = domainColors[domain.id] || domainColors.tech || { color: "#4285F4", darkColor: "#1967D2" };
+    return {
+      ...domain,
+      color: colors.color,
+      darkColor: colors.darkColor
+    };
+  });
+};
 
 const DomainSectionComponent = ({ domain, index, teamSlug }) => {
   const domainSectionRef = useRef(null);
@@ -197,6 +202,8 @@ const TeamPageNew = ({ teamData, teamSlug }) => {
   const theme = useTheme();
   const [isMobile, setIsMobile] = useState(false);
   const leadSectionRef = useRef(null);
+  const year = getYearFromSlug(teamSlug);
+  const domainConfig = getDomainConfig(year);
 
   const { scrollYProgress } = useScroll({
     target: leadSectionRef,

@@ -28,7 +28,6 @@ import Xarrow, { Xwrapper, useXarrow } from "react-xarrows";
 import Avatar from "../avatar/Avatar";
 import { devices } from "@/constants/theme.js";
 import MobileHero from "./MobileHero.jsx";
-import Image from "next/image.js";
 
 const Hero = ({ isMobile }) => {
   const [isClient, setIsClient] = useState(false);
@@ -140,11 +139,14 @@ const Hero = ({ isMobile }) => {
           <ScrollPage>
             <Animator animation={batch(Fade(0, 1), Sticky(), Zoom(8, 1))}>
               <LogoContainer>
-                <Image
-                  src="/logos/gdsc-logo.svg"
-                  alt="GDSC Logo"
-                  priority
-                  fill
+                <img
+                  src="/logos/gdg-logo.svg"
+                  alt="GDG Logo"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "contain"
+                  }}
                 />
                 <MouseContainer>
                   <MouseScroll

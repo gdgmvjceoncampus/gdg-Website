@@ -45,6 +45,14 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "media.licdn.com"
+      },
+      {
+        protocol: "https",
+        hostname: "avatars.githubusercontent.com"
+      },
+      {
+        protocol: "https",
+        hostname: "rkxyhsskayiwaywhnwfg.supabase.co"
       }
     ]
   }

@@ -1,4 +1,4 @@
-import TeamPageNew from "@/components/team/TeamPageNew";
+import TeamPage from "@/components/team/TeamPage";
 import prisma from "@/lib/prisma";
 import Head from "next/head";
 import React from "react";
@@ -23,7 +23,7 @@ const Team = ({ teamData, teamSlug }) => {
         />
         <meta property="og:image" content={"/images/gdsc_fallback.png"} />
       </Head>
-      <TeamPageNew teamData={teamData} teamSlug={teamSlug} />
+      <TeamPage teamData={teamData} teamSlug={teamSlug} />
     </>
   );
 };

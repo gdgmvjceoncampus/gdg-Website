@@ -11,6 +11,13 @@ const Avatar = ({
   ref,
   priority = false
 }) => {
+  // Treat placeholder URLs and empty strings as null
+  const imageUrl = url && 
+                   url.trim() !== "" && 
+                   !url.includes("placeholder") 
+                   ? url 
+                   : null;
+  
   return (
     <AvatarWrapper
       size={size}
@@ -21,7 +28,7 @@ const Avatar = ({
       ref={ref}
     >
       <Image
-        src={url ?? "/images/gdsc_fallback.png"}
+        src={imageUrl ?? "/images/gdsc_fallback.png"}
         alt="Avatar"
         fill={true}
         priority={priority}

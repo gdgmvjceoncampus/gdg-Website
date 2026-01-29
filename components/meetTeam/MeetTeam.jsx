@@ -1,61 +1,22 @@
-import { useEffect, useState } from "react";
-import Link from "next/link";
+import React from 'react'
+import { MainContainer, LeftContainer, RightContainer, MeetButton } from './MeetTeam.styled'
+import Avatar from '../avatar/Avatar'
+import Typography from '../display/typography/Typography'
 
-import {
-  MainContainer,
-  LeftContainer,
-  RightContainer,
-  MeetButton
-} from "./MeetTeam.styled";
-import Avatar from "../avatar/Avatar";
-import Typography from "../display/typography/Typography";
-import { devices } from "@/constants/theme";
+function MeetTeam() {
+    return <MainContainer>
+        <LeftContainer className="container">
+            <Avatar size='xl' borderColor={'#4285F4'} borderWidth={'0.7em'} url={'https://avatars.githubusercontent.com/u/35398866?v=4'} className="first" />
+            <Avatar size='xl' borderColor={'#0F9D58'} borderWidth={'0.7em'} url={'https://avatars.githubusercontent.com/u/94698713?v=4'} className="second" />
+            <Avatar size='xl' borderColor={'#EA4335'} borderWidth={'0.7em'} url={'https://avatars.githubusercontent.com/u/102166167?v=4'}
+                className="third" />
 
-function MeetTeam({ isMobile }) {
-  return (
-    <MainContainer>
-      <LeftContainer>
-        <Avatar
-          size={isMobile ? "lg" : "xl"}
-          borderColor={"#4285F4"}
-          url={
-            "https://res.cloudinary.com/dp9ikb8xo/image/upload/v1692547320/Members/image/shebin.jpg"
-          }
-          className="first"
-          blur={true}
-          borderWidth={"3px"}
-        />
-        <Avatar
-          size={isMobile ? "lg" : "xl"}
-          borderColor={"#0F9D58"}
-          url={
-            "https://res.cloudinary.com/dp9ikb8xo/image/upload/v1692546388/Members/image/Shriya.jpg"
-          }
-          className="second"
-          blur={true}
-          borderWidth={"3px"}
-        />
-        <Avatar
-          size={isMobile ? "lg" : "xl"}
-          borderColor={"#EA4335"}
-          url={
-            "https://res.cloudinary.com/dp9ikb8xo/image/upload/v1692546049/Members/image/aishwarya.jpg"
-          }
-          className="third"
-          blur={true}
-          borderWidth={"3px"}
-        />
-      </LeftContainer>
-      <RightContainer>
-        <Typography variant="h1">
-          Discover the great minds behind GDG.
-        </Typography>
-        <Link href="/team" style={{ textDecoration: "none" }}>
-          <MeetButton>Meet our team</MeetButton>
-        </Link>
-      </RightContainer>
-    </MainContainer>
-  );
+        </LeftContainer>
+        <RightContainer>
+            <Typography variant='h1'>Discover the great minds behind GDG</Typography>
+            <MeetButton>Meet our team</MeetButton>
+        </RightContainer>
+    </MainContainer >
 }
 
-export default MeetTeam;
+export default MeetTeam

@@ -25,6 +25,7 @@ import PsychologyIcon from "@mui/icons-material/Psychology";
 import PaletteIcon from "@mui/icons-material/Palette";
 import ArticleIcon from "@mui/icons-material/Article";
 import PeopleIcon from "@mui/icons-material/People";
+import { getDomainColorsByYear, getYearFromSlug, getColorForRole, getDarkColorForRole } from "@/constants/domainColors";
 
 const domainIcons = {
   tech: CodeIcon,
@@ -32,14 +33,6 @@ const domainIcons = {
   design: PaletteIcon,
   content: ArticleIcon,
   community: PeopleIcon
-};
-
-const domainColors = {
-  tech: { color: "#f8d8d8", darkColor: "#e5a3a3" },
-  "ml-android": { color: "#c3ecf6", darkColor: "#7dd3e8" },
-  design: { color: "#ccf6c5", darkColor: "#8fe880" },
-  content: { color: "#ffe7a5", darkColor: "#ffd54f" },
-  community: { color: "#f0f0f0", darkColor: "#c0c0c0" }
 };
 
 const domainTitles = {
@@ -53,6 +46,8 @@ const domainTitles = {
 const DomainTeamPage = ({ teamData, domain, teamSlug }) => {
   const theme = useTheme();
   const [isMobile, setIsMobile] = useState(false);
+  const year = getYearFromSlug(teamSlug);
+  const domainColors = getDomainColorsByYear(year);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia(devices.lg);
@@ -70,7 +65,7 @@ const DomainTeamPage = ({ teamData, domain, teamSlug }) => {
   }, []);
 
   const Icon = domainIcons[domain] || CodeIcon;
-  const colors = domainColors[domain] || domainColors.tech;
+  const colors = domainColors[domain] || domainColors.tech || { color: "#4285F4", darkColor: "#1967D2" };
   const domainTitle = domainTitles[domain] || "Tech";
 
   // Helper function to match domain
@@ -95,15 +90,19 @@ const DomainTeamPage = ({ teamData, domain, teamSlug }) => {
              roleLower.includes("ux") ||
              roleLower.includes("graphic");
     } else if (domain === "content") {
-      return roleLower.includes("content") || 
+      return (roleLower.includes("content") && !roleLower.includes("social")) || 
              roleLower.includes("writer") || 
              roleLower.includes("writing") || 
              roleLower.includes("blog") ||
-             roleLower.includes("blogger");
+             roleLower.includes("blogger") ||
+             (roleLower.includes("pr") && !roleLower.includes("social"));
     } else if (domain === "community") {
       return roleLower.includes("community") || 
-             roleLower.includes("management") || 
-             roleLower.includes("manager") || 
+             (roleLower.includes("social") && roleLower.includes("media")) ||
+             roleLower.includes("social-media") ||
+             roleLower.includes("marketing") ||
+             (roleLower.includes("management") && !roleLower.includes("media")) ||
+             (roleLower.includes("manager") && !roleLower.includes("media")) ||
              roleLower.includes("outreach");
     }
     return false;
@@ -119,12 +118,14 @@ const DomainTeamPage = ({ teamData, domain, teamSlug }) => {
   const domainLead = domainMembers.find((member) => member.type === "core") || domainMembers[0];
   const domainTeamMembers = domainMembers.filter((member) => member.id !== domainLead?.id);
 
-  const borderColors = [
-    theme.colors.brandBlue,
-    theme.colors.brandGreen,
-    theme.colors.brandRed,
-    theme.colors.brandYellow
-  ];
+  // Get color for member based on their role and year
+  const getMemberColor = (member) => {
+    return getColorForRole(member.role, year);
+  };
+
+  const getMemberDarkColor = (member) => {
+    return getDarkColorForRole(member.role, year);
+  };
 
   return (
     <DomainTeamPageContainer>
@@ -231,12 +232,15 @@ const DomainTeamPage = ({ teamData, domain, teamSlug }) => {
               Team Members
             </Typography>
             <MemberGrid>
-              {domainTeamMembers.map((member, index) => (
+              {domainTeamMembers.map((member, index) => {
+                const memberColor = getMemberColor(member);
+                const memberDarkColor = getMemberDarkColor(member);
+                return (
                 <MemberCard key={member.id}>
-                  <MemberImageContainer borderColor={borderColors[index % 4]}>
+                  <MemberImageContainer borderColor={memberDarkColor}>
                     <Avatar
                       size={isMobile ? "lg" : "xl"}
-                      borderColor={borderColors[index % 4]}
+                      borderColor={memberDarkColor}
                       url={member.profile.image}
                       borderWidth={4}
                     />
@@ -283,7 +287,8 @@ const DomainTeamPage = ({ teamData, domain, teamSlug }) => {
                     )}
                   </MemberActions>
                 </MemberCard>
-              ))}
+              );
+              })}
             </MemberGrid>
           </TeamMembersSection>
         )}

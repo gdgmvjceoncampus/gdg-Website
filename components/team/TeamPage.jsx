@@ -9,10 +9,13 @@ import {
 import Typography from "../display/typography/Typography";
 import { useTheme } from "styled-components";
 import MemberCard from "./memberCard/MemberCard";
+import { getColorForRole, getYearFromSlug } from "@/constants/domainColors";
 
-const TeamPage = ({ teamData }) => {
+const TeamPage = ({ teamData, teamSlug }) => {
   const theme = useTheme();
   const [isMobile, setIsMobile] = useState(false);
+  const year = getYearFromSlug(teamSlug);
+  
   useEffect(() => {
     const mediaQuery = window.matchMedia(devices.lg);
     setIsMobile(mediaQuery.matches);
@@ -27,12 +30,7 @@ const TeamPage = ({ teamData }) => {
       mediaQuery.removeEventListener("change", handleMediaQueryChange);
     };
   }, []);
-  const borderColors = [
-    theme.colors.brandBlue,
-    theme.colors.brandGreen,
-    theme.colors.brandRed,
-    theme.colors.brandYellow
-  ];
+
   return (
     <TeamPageContainer>
       <Typography color={theme.colors.brandBlue} variant="h1">
@@ -52,7 +50,7 @@ const TeamPage = ({ teamData }) => {
             <MemberCard
               key={member.id}
               member={member}
-              avatarBorderColor={borderColors[index % 4]}
+              avatarBorderColor={getColorForRole(member.role, year)}
               avatarSize={isMobile ? "lg" : "xl"}
             />
           ))}
@@ -65,7 +63,7 @@ const TeamPage = ({ teamData }) => {
             <MemberCard
               key={member.id}
               member={member}
-              avatarBorderColor={theme.colors.brandBlue}
+              avatarBorderColor={getColorForRole(member.role, year)}
               avatarSize={isMobile ? "lg" : "xl"}
             />
           ))}

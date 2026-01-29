@@ -23,16 +23,12 @@ export const LoaderContainer = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  translate: translate(-50%, -50%);
   animation: ${fadeOut} 0.7s ease-in-out 2.4s forwards;
 
   .loader {
-    margin-left: -65px;
-  }
-
-  @media ${devices.md} {
-    .loader {
-      margin-left: 0;
-    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(0);
   }
 `;

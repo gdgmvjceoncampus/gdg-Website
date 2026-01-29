@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "check-pr": "git fetch origin && git diff --quiet origin/dev || (echo 'Your PR is not up-to-date with main branch!' && exit 1)",
-    "seed": "node prisma/seed.js"
+    "seed": "node prisma/seed.js",
+    "import-teams": "node scripts/import-teams.js"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.0.8",
