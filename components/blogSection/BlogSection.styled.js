@@ -21,18 +21,29 @@ export const Container = styled.div`
 `;
 
 export const BlogCardContainer = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+  align-items: stretch;
   gap: 1em;
+  width: 100%;
+  max-width: 100%;
+
+  @media screen and (${devices.lg}) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (${devices.sm}) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const BlogCard = styled(Tilt).attrs(() => ({
   tiltMaxAngleX: 8,
   tiltMaxAngleY: 8
 }))`
-  width: 380px;
+  width: 100%;
+  min-width: 0;
   height: 100%;
   min-height: 520px;
   display: flex;
@@ -52,7 +63,6 @@ export const BlogCard = styled(Tilt).attrs(() => ({
   }
 
   @media screen and (${devices.sm}) {
-    width: 100%;
     min-height: auto;
   }
 `;
