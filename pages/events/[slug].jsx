@@ -19,49 +19,54 @@ export default function Event({ eventData }) {
 
 export const getStaticProps = async (ctx) => {
   const { slug } = ctx.params;
-  const event = await prisma.event.findUnique({
-    include: {
-      speakers: true,
-      tags: true
-    },
-    where: {
-      slug: slug
-    }
-  });
-  if (event) {
-    event.startDate = String(event.startDate);
-    event.endDate = String(event.endDate);
-    return {
-      props: {
-        eventData: event
+  try {
+    const event = await prisma.event.findUnique({
+      include: {
+        speakers: true,
+        tags: true
       },
-      revalidate: 20
-    };
-  } else {
-    return {
-      notFound: true
-    };
+      where: {
+        slug: slug
+      }
+    });
+    if (event) {
+      event.startDate = String(event.startDate);
+      event.endDate = String(event.endDate);
+      return {
+        props: {
+          eventData: event
+        },
+        revalidate: 20
+      };
+    }
+  } catch (err) {
+    console.error("[events/[slug]] getStaticProps:", err?.message || err);
   }
+  return {
+    notFound: true
+  };
 };
 
 export async function getStaticPaths() {
-  const events = await prisma.event.findMany({
-    select: {
-      slug: true
-    }
-  });
-  if (events) {
-    const eventSlugs = events.filter((event) => event.slug !== null);
-    const paths = eventSlugs.map((event) => {
-      return {
-        params: {
-          slug: event.slug
-        }
-      };
+  try {
+    const events = await prisma.event.findMany({
+      select: {
+        slug: true
+      }
     });
+    const eventSlugs = (events || []).filter((event) => event.slug != null);
+    const paths = eventSlugs.map((event) => ({
+      params: { slug: event.slug }
+    }));
     return {
-      paths: paths,
-      fallback: false // can also be true or 'blocking'
+      paths,
+      fallback: "blocking"
+    };
+  } catch (err) {
+    console.error("[events/[slug]] getStaticPaths: can't reach database:", err?.message || err);
+    return {
+      paths: [],
+      fallback: "blocking"
     };
   }
 }
