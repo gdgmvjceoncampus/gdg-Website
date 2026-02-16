@@ -31,7 +31,7 @@ function serializeBlog(blog) {
   };
 }
 
-export const getStaticProps = async (ctx) => {
+export const getServerSideProps = async (ctx) => {
   const { slug } = ctx.params;
   try {
     const blog = await prisma.blog.findUnique({
@@ -48,40 +48,15 @@ export const getStaticProps = async (ctx) => {
       return {
         props: {
           articleData
-        },
-        revalidate: 20
+        }
       };
     }
   } catch (err) {
-    console.error("[blogs/[slug]] getStaticProps:", err?.message || err);
+    console.error("[blogs/[slug]] getServerSideProps:", err?.message || err);
   }
   return {
     notFound: true
   };
 };
-
-export async function getStaticPaths() {
-  try {
-    const blogs = await prisma.blog.findMany({
-      select: {
-        slug: true
-      }
-    });
-    const blogSlugs = (blogs || []).filter((blog) => blog.slug != null);
-    const paths = blogSlugs.map((blog) => ({
-      params: { slug: blog.slug }
-    }));
-    return {
-      paths,
-      fallback: "blocking"
-    };
-  } catch (err) {
-    console.error("[blogs/[slug]] getStaticPaths: can't reach database:", err?.message || err);
-    return {
-      paths: [],
-      fallback: "blocking"
-    };
-  }
-}
 
 export default BlogPage;
